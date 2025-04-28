@@ -34,8 +34,8 @@ export const useCards = () => {
 
       const data = await response.json();
       setCards(data.cards);
-    } catch (err: any) {
-      if (err.name !== "AbortError") {
+    } catch (err: unknown) {
+      if (err instanceof Error && err.name !== "AbortError") {
         setError(err.message || "Произошла ошибка");
       }
     } finally {
