@@ -6,6 +6,7 @@ import { useCards } from '@/hooks/useCards';
 
 export default function Page() {
   const { cards, loading, error, fetchCards } = useCards();
+  const itemNumber = 7;
 
   const handleRefresh = () => {
     fetchCards();
@@ -37,8 +38,8 @@ export default function Page() {
       return a.title.localeCompare(b.title);
     });
 
-    const displayedCards = sortedCards.slice(0, 7);
-    const placeholdersCount = 7 - displayedCards.length;
+    const displayedCards = sortedCards.slice(0, itemNumber);
+    const placeholdersCount = itemNumber - displayedCards.length;
 
     return (
       <div className="flex flex-wrap justify-center gap-4">
